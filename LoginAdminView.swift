@@ -7,6 +7,7 @@ struct LoginAdminView: View {
     var comandoDeSaida: () -> Void
     
     var body: some View {
+        NavigationView{
         VStack(spacing: 20) {
             Spacer()
             
@@ -33,7 +34,7 @@ struct LoginAdminView: View {
             }
             .padding(.horizontal, 40)
             
-            Button(action: { print("Login Admin!") }) {
+            NavigationLink(destination: HomeAdminView()) {
                 Text("Entrar")
                     .font(Font.system(size: 20, weight: .bold, design: .serif))
                     .foregroundColor(.white)
@@ -54,11 +55,9 @@ struct LoginAdminView: View {
             Spacer()
         }
         .background(Color.white)
+        .navigationBarHidden(true)
+        
     }
+        .navigationViewStyle(StackNavigationViewStyle())
 }
-
-struct LoginAdminView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginAdminView(comandoDeSaida: {})
-    }
 }
