@@ -6,14 +6,14 @@ struct TipoInterdicaoView: View {
     @State private var isNavigating = false
     
     // Variáveis que serão passadas para a tela de confirmação
-    @State private var quadraSelecionada = "Quadra de tênis 1"
-    @State private var dataInicio = "15 de Junho"
-    @State private var horarioInicio = "08h"
-    @State private var dataFim = "20 de junho"
-    @State private var horarioFim = "16h"
+    @State var quadraSelecionada: String
+    @State var dataInicio: String
+    @State var horarioInicio: String
+    @State var dataFim: String
+    @State var horarioFim: String
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        NavigationView {
             VStack(spacing: 0) {
                 HStack {
                     Spacer()
@@ -31,9 +31,14 @@ struct TipoInterdicaoView: View {
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.ascijaVerdeEscuro)
                     HStack {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 24, weight: .bold))
-                            .foregroundColor(.ascijaVerdeEscuro)
+                        Button(action: {
+                            // Agora este botão fecha esta tela e volta para a tela de Tipos de Espaço
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.title3)
+                                .foregroundColor(Color.ascijaVerdeEscuro)
+                        }
                         Spacer()
                     }
                 }
@@ -107,12 +112,9 @@ struct TipoInterdicaoView: View {
                 .padding(.vertical, 16)
             }
             .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
     }
-}
 
-struct TipoInterdicaoView_Previews: PreviewProvider {
-    static var previews: some View {
-        TipoInterdicaoView()
-    }
-}
+
+
