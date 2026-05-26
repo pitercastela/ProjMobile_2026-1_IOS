@@ -24,11 +24,7 @@ struct TelaLoginView: View {
                 .transition(.opacity)
             }
         }
+        
     }
 }
 
-struct TelaLoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        TelaLoginView()
-    }
-}
