@@ -74,26 +74,21 @@ struct ConfirmacaoInterditacaoView: View {
             Divider()
             
             // 5. Botão Voltar (Usando o estilo padronizado)
-            Button("Voltar ao início") {
-                presentationMode.wrappedValue.dismiss()
+            NavigationLink(destination: HomeAdminView()) {
+                Text("Voltar ao início")
+                    .font(Font.system(size: 20, weight: .bold, design: .serif))
+                    .foregroundColor(.white)
+                    .frame(width: 170, height: 45)
+                    .background(Color.ascijaVerdeEscuro)
+                    .cornerRadius(8)
             }
-            .buttonStyle(BotaoConfirmarStyle()) // Reutilizando o estilo do AppStyle
-            .padding(.horizontal)
-            .padding(.vertical, 16)
+            .padding(.horizontal, 40)
+            .padding(.bottom, 15)
+            .padding(.top, 15)
         }
         // Esconde a barra de navegação padrão do sistema para usar o nosso design
         .navigationBarHidden(true)
     }
 }
 
-struct ConfirmacaoView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfirmacaoInterditacaoView(
-            quadra: "Quadra de tênis 1",
-            dataInicio: "15 de Junho",
-            horarioInicio: "08h",
-            dataFim: "20 de junho",
-            horarioFim: "16h"
-        )
-    }
-}
+
